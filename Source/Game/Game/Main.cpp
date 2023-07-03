@@ -10,6 +10,9 @@ using namespace std;
 
 int main()
 {
+	Enginuity::CreateWindow("CSC196", 800, 600);
+	cin.get(); //pause
+
 	Enginuity::g_memoryTracker.DisplayInfo();
 	int* p = new int;
 	Enginuity::g_memoryTracker.DisplayInfo();
