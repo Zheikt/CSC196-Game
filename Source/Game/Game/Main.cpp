@@ -8,12 +8,30 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-	Enginuity::CreateWindow("CSC196", 800, 600);
-	cin.get(); //pause
+	Enginuity::Renderer renderer;
 
-	Enginuity::g_memoryTracker.DisplayInfo();
+	renderer.Initialize();
+	renderer.CreateWindow("CSC196", 800, 600);
+
+	while (true) 
+	{
+		renderer.SetColor(0, 0, 0, 0);
+		renderer.BeginFrame();
+		//draw
+		renderer.SetColor(Enginuity::random(256), Enginuity::random(256), Enginuity::random(256), Enginuity::random(256));
+
+		for (size_t i = 0; i < 100; i++)
+		{
+			//renderer.DrawPoint(Enginuity::random(renderer.GetWidth()), Enginuity::random(renderer.GetHeight()));
+			renderer.DrawLine(Enginuity::random(renderer.GetWidth()), Enginuity::random(renderer.GetHeight()), Enginuity::random(renderer.GetWidth()), Enginuity::random(renderer.GetHeight()));
+		}
+
+		renderer.EndFrame();
+	}
+
+	/*Enginuity::g_memoryTracker.DisplayInfo();
 	int* p = new int;
 	Enginuity::g_memoryTracker.DisplayInfo();
 	delete p;
@@ -21,7 +39,7 @@ int main()
 
 	Enginuity::Time timer;
 	for (long long i = 0; i < LLONG_MAX; i++) {}
-	cout << timer.GetElapsedSeconds() << endl;
+	cout << timer.GetElapsedSeconds() << endl;*/
 
 	/*auto start = std::chrono::high_resolution_clock::now();
 
