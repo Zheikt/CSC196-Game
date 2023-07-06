@@ -156,10 +156,12 @@
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
