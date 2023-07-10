@@ -33,4 +33,6 @@ namespace Enginuity
 		Vector2& operator *= (float s) { x * s; y * s; return *this; }
 		Vector2& operator /= (float s) { x / s; y / s; return *this; }
 	};
+
+	using vec2 = Vector2;
 }

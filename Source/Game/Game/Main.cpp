@@ -9,10 +9,10 @@ using namespace std;
 class Star
 {
 public:
-	Enginuity::Vector2 m_pos;
-	Enginuity::Vector2 m_vel;
+	Enginuity::vec2 m_pos;
+	Enginuity::vec2 m_vel;
 public:
-	Star(const Enginuity::Vector2& position, const Enginuity::Vector2& velocity) : m_pos{ position }, m_vel{ velocity } {}
+	Star(const Enginuity::vec2& position, const Enginuity::vec2& velocity) : m_pos{ position }, m_vel{ velocity } {}
 
 	void Update(int width, int height) 
 	{
@@ -45,8 +45,8 @@ int main(int argc, char* argv[])
 
 	for (size_t i = 0; i < 1000; i++)
 	{
-		Enginuity::Vector2 pos(Enginuity::Vector2(Enginuity::random(renderer.GetWidth()), Enginuity::random(renderer.GetHeight())));
-		Enginuity::Vector2 vel(Enginuity::Vector2(Enginuity::randomf(1,4), Enginuity::randomf(1, 4)));
+		Enginuity::vec2 pos(Enginuity::vec2(Enginuity::random(renderer.GetWidth()), Enginuity::random(renderer.GetHeight())));
+		Enginuity::vec2 vel(Enginuity::vec2(Enginuity::randomf(1,4), Enginuity::randomf(1, 4)));
 
 		stars.push_back(Star(pos, vel));
 	}
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 		renderer.SetColor(0, 0, 0, 0);
 		renderer.BeginFrame();
 		//draw
-		Enginuity::Vector2 vel(1.0f, 0.3f);
+		Enginuity::vec2 vel(1.0f, 0.3f);
 
 		for (auto& star : stars)
 		{
