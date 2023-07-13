@@ -2,6 +2,8 @@
 #include <SDL2-2.28.0/include/SDL.h>
 namespace Enginuity
 {
+	Renderer g_renderer;
+
 	bool Renderer::Initialize()
 	{
 		SDL_Init(SDL_INIT_VIDEO);
