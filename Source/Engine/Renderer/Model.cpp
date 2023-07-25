@@ -11,6 +11,8 @@ namespace Enginuity
 
 		std::istringstream stream(buffer);
 
+		stream >> m_color;
+
 		std::string line;
 		std::getline(stream, line);
 
@@ -46,6 +48,19 @@ namespace Enginuity
 	void Model::Draw(Renderer& renderer, const Transform& transform)
 	{
 		Draw(renderer, transform.position, transform.rotation, transform.scale);
+	}
+
+	float Model::GetRadius()
+	{
+		if (m_radius != 0) return m_radius;
+
+		for (auto& point : m_points)
+		{
+			float length = point.Length();
+			m_radius = Max(m_radius, length);
+		}
+
+		return m_radius;
 	}
 }
 

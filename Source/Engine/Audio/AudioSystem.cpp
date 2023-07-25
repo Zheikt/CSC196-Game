@@ -2,6 +2,8 @@
 
 namespace Enginuity
 {
+	AudioSystem g_audioSystem;
+
 	bool AudioSystem::Initialize()
 	{
 		FMOD::System_Create(&m_fmodSystem);

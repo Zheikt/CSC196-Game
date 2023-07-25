@@ -1,9 +1,15 @@
 #include "Player.h"
+#include "Weapon.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
+#include "Framework/Scene.h"
+#include "Framework/Actor.h"
+#include "SpaceGame.h"
 
 void Player::Update(float dt)
 {
+	Enginuity::Actor::Update(dt);
+
 	Enginuity::vec2 direction;
 	float rotate = 0;
 
@@ -18,4 +24,26 @@ void Player::Update(float dt)
 	m_transform.position += forward * m_speed * thrust * dt;
 	m_transform.position.x = Enginuity::Wrap(m_transform.position.x, (float)Enginuity::g_renderer.GetWidth());
 	m_transform.position.y = Enginuity::Wrap(m_transform.position.y, (float)Enginuity::g_renderer.GetHeight());
+
+	if (Enginuity::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !Enginuity::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
+		Enginuity::Transform transform{m_transform.position, m_transform.rotation, 1};
+		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform, m_model);
+		weapon->m_tag = "Player";
+		m_scene->Add(std::move(weapon));
+	}
+}
+
+void Player::OnCollision(Actor* other)
+{
+	if (other->m_tag != "Player")
+	{
+		m_health -= 1;
+		if (m_health <= 0) 
+		{
+			m_destroyed = true;
+			m_game->SetLives(m_game->GetLives() - 1);
+			dynamic_cast<SpaceGame*>(m_game)->SetState(SpaceGame::eState::PlayerDead);
+		}
+	}
+	
 }
