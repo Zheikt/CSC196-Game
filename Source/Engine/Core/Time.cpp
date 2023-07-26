@@ -37,9 +37,5 @@ namespace Enginuity
 	{
 		return (clock::now() - m_startTime).count() / static_cast<float>(clock_duration::period::den);
 	}
-	float Time::GetDeltaTime()
-	{
-		return m_deltaTime;
-	}
 }
 

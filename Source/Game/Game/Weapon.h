@@ -1,6 +1,8 @@
 #pragma once
 #include "Framework/Actor.h"
 #include "Renderer/Model.h"
+#include <list>
+#include <string>
 
 class Weapon : public Enginuity::Actor
 {
@@ -13,6 +15,9 @@ public:
 	void Update(float dt) override;
 
 	void OnCollision(Actor* actor) override;
+
+	void SetImmunities(std::list<std::string> labels) { m_immuneLabels = labels; }
 private:
 	float m_speed = 0;
+	std::list<std::string> m_immuneLabels;
 };

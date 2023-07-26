@@ -12,7 +12,9 @@ public:
 		StartGame,
 		StartLevel,
 		Game,
+		PlayerDeadStart,
 		PlayerDead,
+		GameOverStart,
 		GameOver
 	};
 public:
@@ -29,7 +31,13 @@ private:
 	float m_spawnTimer = 0;
 	float m_spawnTime = 3;
 
+	float m_gameTimer = 0;
+
+	float m_stateTimer = 0;
+
 	std::shared_ptr<Enginuity::Font> m_font;
 	std::unique_ptr<Enginuity::Text> m_scoreText;
 	std::unique_ptr<Enginuity::Text> m_titleText;
+	std::unique_ptr<Enginuity::Text> m_gameOverText;
+	std::unique_ptr<Enginuity::Text> m_timerText;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <utility>
 
 namespace Enginuity 
 {
@@ -38,5 +39,11 @@ namespace Enginuity
 		if (min > max) std::swap(min, max);
 
 		return (value < min) ? min : (value > max) ? max : value;
+	}
+
+	template<typename T>
+	constexpr T Lerp(const T& a, const T& b, float t) //0 < t < 1
+	{
+		return (a * (1.0f - t)) + (b * t);
 	}
 }

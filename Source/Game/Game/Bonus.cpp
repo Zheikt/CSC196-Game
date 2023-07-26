@@ -1,8 +1,7 @@
-#include "Weapon.h"
-#include "Renderer/Renderer.h"
-#include "Framework/Actor.h"
+#include "Bonus.h"
+#include "SpaceGame.h"
 
-void Weapon::Update(float dt)
+void Bonus::Update(float dt)
 {
 	Enginuity::Actor::Update(dt);
 
@@ -12,21 +11,11 @@ void Weapon::Update(float dt)
 	m_transform.position.y = Enginuity::Wrap(m_transform.position.y, (float)Enginuity::g_renderer.GetHeight());
 }
 
-void Weapon::OnCollision(Actor* other)
+void Bonus::OnCollision(Actor* other)
 {
-	bool foundLabel = false;
-
-	for (auto& label : m_immuneLabels)
-	{
-		if (other->m_tag == label) 
-		{
-			foundLabel = true;
-			break;
-		}
-	}
-
-	if (!foundLabel)
+	if (other->m_tag == "Player")
 	{
 		m_destroyed = true;
+		m_game->AddPoints(200);
 	}
 }

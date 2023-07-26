@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Framework/ParticleSystem.h"
 
 #include "SpaceGame.h"
 
@@ -80,6 +81,7 @@ int main(int argc, char* argv[])
 		Enginuity::g_time.Tick();
 		Enginuity::g_inputSystem.Update();
 		Enginuity::g_audioSystem.Update();
+		Enginuity::g_particleSystem.Update(Enginuity::g_time.GetDeltaTime());
 
 		//0=L 1=M 2=R (Mouse buttons)
 		if (Enginuity::g_inputSystem.GetKeyDown(SDL_SCANCODE_ESCAPE)) 
@@ -102,6 +104,8 @@ int main(int argc, char* argv[])
 		Enginuity::g_renderer.SetColor(255, 255, 255, 0);
 
 		game->Draw(Enginuity::g_renderer);
+
+		Enginuity::g_particleSystem.Draw(Enginuity::g_renderer);
 
 		Enginuity::g_renderer.EndFrame();
 
