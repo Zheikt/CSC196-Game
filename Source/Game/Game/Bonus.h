@@ -1,21 +1,28 @@
 #pragma once
-#include "Framework/Actor.h"
+#include "Collectible.h"
+#include "Label.h"
+#include <string>
 
-class Bonus : public Enginuity::Actor 
+class Renderer;
+
+class Bonus : public Collectible
 {
 public:
 	Bonus() = default;
-	Bonus(float speed, float turnRate, const Enginuity::Transform& transform, std::shared_ptr<Enginuity::Model> model)
-		: Actor{ transform, model }, m_speed(speed), m_turnRate(turnRate) 
+	Bonus(float speed, const Enginuity::Transform& transform, std::shared_ptr<Enginuity::Model> model, std::shared_ptr<Enginuity::Font> font, const int value)
+		: Collectible{ speed, transform, model, value }
 	{
 		m_lifespan = 3.0f;
+		Enginuity::Transform transform2 = transform;
+		transform2.position.x -= 13;
+		transform2.position.y -= 8;
+		m_valueText = Label{ transform2, font, speed, m_lifespan };
 	}
 
-	void Update(float dt) override;
+	void Draw(Enginuity::Renderer& renderer) override;
 
-	void OnCollision(Actor* other) override;
+	void Create(Enginuity::Renderer& renderer, const Enginuity::Color& color);
 
 private:
-	float m_speed;
-	float m_turnRate;
+	Label m_valueText;
 };

@@ -28,6 +28,12 @@
     <ClCompile Include="Label.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="BurstWeapon.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectible.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -46,6 +52,12 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Label.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="BurstWeapon.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectible.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

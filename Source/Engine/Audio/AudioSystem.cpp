@@ -40,6 +40,47 @@ namespace Enginuity
 			sound->setMode(loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
 			FMOD::Channel* channel;
 			m_fmodSystem->playSound(sound, 0, false, &channel);
+			m_channels[name] = channel;
 		}
+	}
+
+	void AudioSystem::PlayLoop(const std::string& name)
+	{
+		auto iter = m_sounds.find(name);
+		if (iter != m_sounds.end())
+		{
+			FMOD::Sound* sound = iter->second;
+			sound->setMode(FMOD_LOOP_NORMAL);
+			FMOD::Channel* channel;
+			m_fmodSystem->playSound(sound, 0, false, &channel);
+			m_channels[name] = channel;
+		}
+	}
+
+	void AudioSystem::StopLoop(const std::string& name)
+	{
+		auto iter = m_sounds.find(name);
+		auto chanIter = m_channels.find(name);
+		if (iter != m_sounds.end())
+		{
+			/*FMOD::Sound* sound = iter->second;
+			sound->setMode(FMOD_LOOP_OFF);*/
+			FMOD::Channel* channel = chanIter->second;
+			channel->stop();
+			//m_fmodSystem->playSound(sound, 0, true, &channel);
+		}
+	}
+
+	bool AudioSystem::IsPlaying(const std::string& name)
+	{
+		auto iter = m_channels.find(name);
+		if (iter != m_channels.end())
+		{
+			bool* retVal = new bool{ false };
+			iter->second->isPlaying(retVal);
+			return *retVal;
+		}
+
+		return false;
 	}
 }

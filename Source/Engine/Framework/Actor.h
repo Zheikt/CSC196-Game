@@ -20,6 +20,8 @@ namespace Enginuity
 		float GetRadius() { return (m_model) ? m_model->GetRadius() * m_transform.scale : 0; }
 		virtual void OnCollision(Actor* other) {};
 
+		bool ProcessCollision() const { return !m_destroyed; }
+
 		void AddForce(const vec2& force) { m_velocity += force; }
 		void SetDamping(float damping) { m_damping = damping; }
 

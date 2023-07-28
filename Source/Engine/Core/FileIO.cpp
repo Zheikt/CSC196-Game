@@ -43,4 +43,14 @@ namespace Enginuity
 
 		return true;
 	}
+	bool saveFile(const std::filesystem::path& path, std::string& buffer)
+	{
+		std::ofstream stream(path);
+		if (!stream.is_open()) return false;
+
+		stream << buffer.data() << std::endl;
+		stream.close();
+
+		return true;
+	}
 }

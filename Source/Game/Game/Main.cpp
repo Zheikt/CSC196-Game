@@ -108,8 +108,6 @@ int main(int argc, char* argv[])
 		Enginuity::g_particleSystem.Draw(Enginuity::g_renderer);
 
 		Enginuity::g_renderer.EndFrame();
-
-		//this_thread::sleep_for(chrono::milliseconds(500));
 	}
 
 	return 0;

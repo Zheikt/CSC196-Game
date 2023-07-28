@@ -14,6 +14,8 @@ void Weapon::Update(float dt)
 
 void Weapon::OnCollision(Actor* other)
 {
+	if (!Actor::ProcessCollision()) return;
+
 	bool foundLabel = false;
 
 	for (auto& label : m_immuneLabels)

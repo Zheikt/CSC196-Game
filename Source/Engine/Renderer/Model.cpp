@@ -36,6 +36,8 @@ namespace Enginuity
 			return;
 		}
 
+		renderer.SetColor(m_color.r, m_color.g, m_color.b, m_color.a);
+
 		for(size_t index = 0; index < m_points.size() - 1; index++)
 		{
 			vec2 p1 = (m_points[index] * scale).Rotate(rotation) + position;

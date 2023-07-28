@@ -17,4 +17,7 @@ private:
 	float m_speed = 0;
 	float m_turnRate = 0;
 	float m_health = 20;
+
+	bool m_burstActive;
+	float m_burstTimeRemaining = 5.0f;
 };

@@ -24,15 +24,15 @@ namespace Enginuity
 
 		//line  = { ###, ###, ### }
 		std::string str = line.substr(line.find('{') + 1, line.find(',') - line.find('{'));
-		color.r = std::stof(str);
+		color.r = Color::ToInt(std::stof(str));
 
 		line = line.substr(line.find(',') + 1);
 
 		str = line.substr(0, line.find(','));
-		color.g = std::stof(str);
+		color.g = Color::ToInt(std::stof(str));
 
 		str = line.substr(line.find(',') + 1, line.find('}') - line.find(','));
-		color.b = std::stof(str);
+		color.b = Color::ToInt(std::stof(str));
 
 		color.a = 1;
 
